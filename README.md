@@ -8,7 +8,8 @@ The main repository is on:
 ## License
 GNU General Public License v3.0 -
 
-## What is Kudu?
+## What is it?
+Server to run your php apps like wordrpess etc
 
 ## Usage
 Check the docker-compose.yml files

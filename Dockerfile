@@ -18,7 +18,9 @@ RUN apt-get update && apt-get install -y \
   emacs25-nox \ 
   git \
   gnupg \
-  sqlite3
+  sqlite3 \
+  unzip 
+
 
 
 
