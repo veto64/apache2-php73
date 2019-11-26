@@ -11,21 +11,16 @@ RUN apt-get update && apt-get install -y \
   openssh-server \
   supervisor \
   redis-server \
-  mysql-client \
+  default-mysql-client \
   libpcre3-dev \
   gcc \
   make \
   emacs25-nox \ 
+  vim \ 
   git \
   gnupg \
   sqlite3 \
   unzip 
-
-
-
-
-RUN curl https://packages.sury.org/php/apt.gpg | apt-key add -
-RUN echo "deb https://packages.sury.org/php/ stretch  main" > /etc/apt/sources.list.d/php.list
 
 RUN apt-get update && apt-get install -y \
   php7.3 \
@@ -47,9 +42,6 @@ RUN apt-get update && apt-get install -y \
   php-pear \
   composer
 
-
-
-
 RUN echo "<?php phpinfo() ?>" > /var/www/html/index.php ; \
 mkdir -p /var/lock/apache2 /var/run/apache2 /var/run/sshd /var/log/supervisor ; \
 a2enmod rewrite  ;\
@@ -63,12 +55,9 @@ sed -i -e '/short_open_tag =/ s/= .*/= ON/' /etc/php/7.3/cli/php.ini ; \
 sed -i -e '/AllowOverride / s/ .*/ All/' /etc/apache2/apache2.conf ; \
 sed -i -e '/max_execution_time =/ s/= .*/= 1200/' /etc/php/7.3/apache2/php.ini ; 
 
-
-
 RUN pear install mail \
 pear upgrade MAIL Net_SMTP \
 mkdir -p /var/lock/apache2 /var/run/apache2 /var/run/sshd /var/log/supervisor
-
 
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
