@@ -41,6 +41,7 @@ RUN apt-get update && apt-get install -y \
   php7.3-sqlite3 \ 
   php7.3-ldap \
   php7.3-sybase \ 
+  php7.3-pgsql \
   php-redis \
   libapache2-mod-php7.3 \
   php-pear \
